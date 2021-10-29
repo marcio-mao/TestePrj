@@ -1,0 +1,7 @@
+* >Natural Source Header 000000
+* :Mode R
+* :CP
+* <Natural Source Header
+read ada-employees by name
+  display personnel-id name
+END

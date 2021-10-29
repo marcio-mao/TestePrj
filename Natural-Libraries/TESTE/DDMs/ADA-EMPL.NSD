@@ -1,0 +1,18 @@
+DB: 012 FILE: 011  - ADA-EMPLOYEES                    DEFAULT SEQUENCE:   
+TYPE: ADABAS
+
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------- - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      <Natural Source Header
+  1 AA PERSONNEL-ID                      A    8    D 
+G 1 AB FULL-NAME                                     
+  2 AC FIRST-NAME                        A   20  N   
+  2 AE NAME                              A   20    D 
+  2 AD MIDDLE-NAME                       A   20  N   
+  1 AF MAR-STAT                          A    1  F   
+  1 AG SEX                               A    1  F   
+******DDM OUTPUT TERMINATED******
