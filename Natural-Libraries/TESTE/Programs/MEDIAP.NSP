@@ -1,0 +1,45 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+DEFINE DATA
+LOCAL
+1 NOTA1 (N2,2)
+1 NOTA2 (N2,2)
+1 MEDIA (N2,2)
+1 WS-SITUACAO (A20)
+1 CV-SIT (C)
+END-DEFINE
+*
+SET KEY PF5=PGM
+*
+REPEAT
+  INPUT (AD=MILT'_' IP=OFF SG=OFF ZP=OFF)
+    'Entre com as notas:'
+    //   'Nota 1:' NOTA1
+    /    'Nota 2:' NOTA2
+    //   'Média.:' MEDIA(AD=OI)
+    //   'Situac:'     WS-SITUACAO(CV=CV-SIT)     
+    //  'PF5-SAI'
+*
+  IF (*PF-KEY EQ 'PF5')
+    ESCAPE BOTTOM
+  END-IF      
+*
+  IF (NOT NOTA1 EQ 0 THRU 10)
+    REINPUT 'NOTA iNVÁLIDA!' MARK *NOTA1 ALARM
+  END-IF
+  IF (NOT NOTA2 EQ 0 THRU 10)
+    REINPUT 'NOTA iNVÁLIDA!' MARK *NOTA2 ALARM
+  END-IF
+*
+  MEDIA := (NOTA1 + NOTA2) / 2
+  IF (MEDIA GE 7)
+    MOVE 'APROVADO' TO WS-SITUACAO
+    MOVE (AD=PI) TO CV-SIT
+  ELSE
+    MOVE 'REPROVADO' TO WS-SITUACAO
+    MOVE (AD=PI CD=RE) TO CV-SIT  
+  END-IF    
+END-REPEAT 
+END
