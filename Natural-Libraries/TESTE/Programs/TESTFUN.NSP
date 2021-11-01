@@ -1,0 +1,20 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+DEFINE DATA
+LOCAL
+1 #ENE (I2)
+1 #IND (I2)
+END-DEFINE
+*
+INPUT 'ENTRE O N PARA GERAR A SERIE: ' #ENE(AD=MILT'_' IP=OFF)
+*
+FOR #IND EQ 1 TO #ENE
+  DISPLAY
+    'N'    #IND 
+    'AOFN' AOFN(< #IND >)
+    'FAT' FATORIAL(< #IND >)
+END-FOR
+*
+END

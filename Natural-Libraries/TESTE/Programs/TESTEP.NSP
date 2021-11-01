@@ -11,5 +11,5 @@ end-define
 read vw by name 
   display name
 end-read
-*
+**
 END
