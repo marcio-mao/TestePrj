@@ -4,17 +4,34 @@
 * <Natural Source Header
 DEFINE DATA
 LOCAL
-1 #ENE (I2)
 1 #IND (I2)
-END-DEFINE
+1 #ENE-ALPHA   (A9)
+1 REDEFINE #ENE-ALPHA 
+  2 #ENE       (N9)
+1 #AOFN-ALPHA  (A9)
+1 REDEFINE #AOFN-ALPHA
+  2 #AOFN       (N9)
+1 #FAT-ALPHA   (A9)
+1 REDEFINE #FAT-ALPHA
+  2 #FAT       (N9)END-DEFINE
 *
-INPUT 'ENTRE O N PARA GERAR A SERIE: ' #ENE(AD=MILT'_' IP=OFF)
+INPUT 'ENTRE O IND PARA GERAR A SERIE: ' #IND(AD=MILT'_' IP=OFF)
 *
-FOR #IND EQ 1 TO #ENE
-  DISPLAY
-    'N'    #IND 
-    'AOFN' AOFN(< #IND >)
-    'FAT' FATORIAL(< #IND >)
+FOR #ENE EQ 1 TO #IND
+  #AOFN := AOFN    (< #ENE >) /* Chama a função externa AOFN
+  #FAT  := FATORIAL(< #ENE >) /* Chama a função externa FATORIAL
+  /* Chama a subrotina 
+  PERFORM SR-MONTA-DISPLAY    /* Chama a função interna SR-MONTA-DISPLAY
 END-FOR
+* Fim de Programa
+*
+* sUBROTINAS
+*
+DEFINE SUBROUTINE SR-MONTA-DISPLAY
+  DISPLAY 
+    'N'    #ENE 
+    'AOFN' #AOFN     
+    'FAT'  #FAT      
+END-SUBROUTINE
 *
 END
